@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SprintAI - Connexion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-xl w-96">
+            <h1 class="text-3xl font-bold text-center mb-8 text-green-400">SprintAI</h1>
+            
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="email" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:border-green-400 focus:ring-1 focus:ring-green-400" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2">Mot de passe</label>
+                    <input type="password" id="password" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:border-green-400 focus:ring-1 focus:ring-green-400" required>
+                </div>
+                
+                <div>
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded transition duration-200">
+                        Se connecter
+                    </button>
+                </div>
+                
+                <div id="loginError" class="text-red-500 text-sm text-center mt-2 hidden"></div>
+                <div class="text-center text-sm mt-4">
+                    <a href="#" class="text-green-400 hover:underline">Mot de passe oublié ?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simulation de la base de données
+        const users = {
+            'athlet@sprintai.ma': {
+                password: '12345',
+                name: 'Athlète',
+                role: 'athlete'
+            },
+            'coach@sprintai.ma': {
+                password: '12345',
+                name: 'Coach',
+                role: 'coach'
+            },
+            'expert@sprintai.ma': {
+                password: '12345',
+                name: 'Expert',
+                role: 'expert'
+            },
+            'admin@sprintai.ma': {
+                password: '12345',
+                name: 'Administrateur',
+                role: 'admin'
+            }
+        };
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+
+            const loginError = document.getElementById('loginError');
+            
+            if (!email || !password) {
+                loginError.textContent = 'Veuillez remplir tous les champs';
+                loginError.classList.remove('hidden');
+                return;
+            }
+
+            // Convertir l'email en minuscules pour la comparaison
+            const userEmail = email.toLowerCase();
+            const user = users[userEmail];
+
+            if (!user || user.password !== password) {
+                loginError.textContent = 'Email ou mot de passe incorrect';
+                loginError.classList.remove('hidden');
+                return;
+            }
+            
+            // Réinitialiser l'erreur
+            loginError.classList.add('hidden');
+
+            // Stocker les informations de l'utilisateur
+            localStorage.setItem('user', JSON.stringify(user));
+            
+            // Rediriger vers le dashboard
+            window.location.href = 'dashboard.html';
+        });
+
+        // Vérification de l'authentification existante
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        // Fonction pour vérifier l'authentification
+        function checkAuth() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

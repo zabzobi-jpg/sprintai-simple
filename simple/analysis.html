@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SprintAI - Analyse de la foulée</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/pose.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 p-6">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-green-400">SprintAI</h1>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="athlete.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded athlete-only">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    <span>Espace Athlète</span>
+                </a>
+                <a href="coach.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded coach-only">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <span>Espace Coach</span>
+                </a>
+                <a href="analysis.html" class="flex items-center p-3 text-white bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                    </svg>
+                    <span>Analyse de la foulée</span>
+                </a>
+                <a href="history.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Historique</span>
+                </a>
+                <a href="recommendations.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <span>Recommandations IA</span>
+                </a>
+                <a href="settings.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span>Paramètres</span>
+                </a>
+                <a href="support.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                    <span>Support</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-6">
+                <div class="flex items-center mb-4">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium" id="userName"></p>
+                        <p class="text-xs text-gray-400" id="userRole"></p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-8">
+                <h2 class="text-3xl font-bold mb-8">Analyse de la foulée</h2>
+
+                <!-- Zone de capture vidéo -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Zone de capture -->
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-4">Capture Vidéo</h3>
+                        <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg mb-4">
+                            <video id="video" class="w-full rounded-lg" playsinline></video>
+                        </div>
+                        
+                        <!-- Outils de capture -->
+                        <div class="space-y-4">
+                            <!-- Source vidéo -->
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Source Vidéo</label>
+                                <select id="videoSource" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:border-green-400 focus:ring-1 focus:ring-green-400">
+                                    <option value="camera">Caméra Web</option>
+                                    <option value="file">Fichier Vidéo</option>
+                                </select>
+                            </div>
+
+                            <!-- Upload vidéo -->
+                            <div id="fileUpload" class="hidden">
+                                <label class="block text-sm font-medium mb-2">Sélectionner une vidéo</label>
+                                <input type="file" id="videoFile" accept="video/*" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:border-green-400 focus:ring-1 focus:ring-green-400">
+                            </div>
+
+                            <!-- Contrôles -->
+                            <div class="flex space-x-4">
+                                <button onclick="startCapture()" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded">
+                                    Démarrer
+                                </button>
+                                <button onclick="startAnalysis()" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
+                                    Analyser
+                                </button>
+                                <button onclick="stopAnalysis()" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded">
+                                    Stop
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Métriques et Feedback -->
+                    <div class="space-y-6">
+                        <!-- Métriques en temps réel -->
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-4">Métriques en temps réel</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-gray-700 p-4 rounded-lg">
+                                    <h4 class="text-sm font-medium mb-2">Angle Genou</h4>
+                                    <p class="text-3xl font-bold text-green-400" id="kneeAngle">--°</p>
+                                </div>
+                                <div class="bg-gray-700 p-4 rounded-lg">
+                                    <h4 class="text-sm font-medium mb-2">Angle Hanche</h4>
+                                    <p class="text-3xl font-bold text-green-400" id="hipAngle">--°</p>
+                                </div>
+                                <div class="bg-gray-700 p-4 rounded-lg">
+                                    <h4 class="text-sm font-medium mb-2">Temps de Contact</h4>
+                                    <p class="text-3xl font-bold text-green-400" id="contactTime">-- ms</p>
+                                </div>
+                                <div class="bg-gray-700 p-4 rounded-lg">
+                                    <h4 class="text-sm font-medium mb-2">Fréquence</h4>
+                                    <p class="text-3xl font-bold text-green-400" id="frequency">-- Hz</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feedback IA -->
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-4">Feedback IA</h3>
+                            <div id="feedback" class="space-y-4">
+                                <div class="bg-gray-700 p-4 rounded-lg">
+                                    <p class="text-yellow-400">⚠️ Augmentez la flexion du genou</p>
+                                </div>
+                                <div class="bg-gray-700 p-4 rounded-lg">
+                                    <p class="text-green-400">✅ Bon alignement du tronc</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales pour le contrôle de la vidéo
+        let videoElement = document.getElementById('video');
+        let videoStream = null;
+        let pose = null;
+        let isAnalyzing = false;
+        let animationFrameId = null;
+        let videoSource = document.getElementById('videoSource');
+        let videoFileInput = document.getElementById('videoFile');
+        let fileUploadDiv = document.getElementById('fileUpload');
+
+        // Vérification de l'authentification
+        const currentUser = JSON.parse(localStorage.getItem('user'));
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        }
+
+        // Mise à jour des informations utilisateur
+        document.getElementById('userName').textContent = currentUser.name;
+        document.getElementById('userRole').textContent = currentUser.role;
+
+        // Afficher/masquer les éléments selon le rôle
+        document.querySelectorAll('.coach-only').forEach(el => {
+            if (currentUser.role === 'coach') {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        });
+
+        document.querySelectorAll('.athlete-only').forEach(el => {
+            if (currentUser.role === 'athlete') {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+
+        // Fonctions d'analyse vidéo
+        async function startCapture() {
+            if (isAnalyzing) {
+                alert('Arrêtez l\'analyse en cours avant de changer la source');
+                return;
+            }
+
+            const source = videoSource.value;
+            try {
+                if (source === 'camera') {
+                    videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    videoElement.srcObject = videoStream;
+                } else {
+                    const file = videoFileInput.files[0];
+                    if (file) {
+                        const videoBlob = new Blob([file], { type: file.type });
+                        videoElement.src = URL.createObjectURL(videoBlob);
+                    }
+                }
+                videoElement.play();
+            } catch (error) {
+                console.error('Erreur accès caméra:', error);
+                alert('Erreur lors de l\'accès à la caméra');
+            }
+        }
+
+        async function startAnalysis() {
+            if (!videoElement.src) {
+                alert('Veuillez sélectionner une source vidéo d\'abord');
+                return;
+            }
+
+            if (!pose) {
+                pose = new Pose({
+                    locateFile: (file) => {
+                        return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+                    }
+                });
+
+                pose.setOptions({
+                    modelComplexity: 1,
+                    smoothLandmarks: true,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+
+                pose.onResults(onResults);
+            }
+
+            isAnalyzing = true;
+            animationFrameId = requestAnimationFrame(analyzeFrame);
+        }
+
+        function stopAnalysis() {
+            isAnalyzing = false;
+            cancelAnimationFrame(animationFrameId);
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+                videoStream = null;
+            }
+            videoElement.srcObject = null;
+            videoElement.pause();
+            pose = null;
+            // Réinitialiser les métriques et feedbacks
+            document.getElementById('kneeAngle').textContent = '0°';
+            document.getElementById('contactTime').textContent = '0ms';
+            document.getElementById('frequency').textContent = '0 Hz';
+            document.getElementById('feedback').textContent = '';
+        }
+
+        // Gestion du changement de source vidéo
+        videoSource.addEventListener('change', function() {
+            if (this.value === 'file') {
+                fileUploadDiv.classList.remove('hidden');
+            } else {
+                fileUploadDiv.classList.add('hidden');
+            }
+        });
+
+        // Gestion de l'upload de fichier
+        videoFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const videoBlob = new Blob([e.target.result], { type: file.type });
+                    videoElement.src = URL.createObjectURL(videoBlob);
+                };
+                reader.readAsArrayBuffer(file);
+            }
+        });
+
+
+
+        async function startCapture() {
+            if (isAnalyzing) {
+                alert('Arrêtez l\'analyse en cours avant de changer la source');
+                return;
+            }
+
+            const source = videoSource.value;
+            try {
+                if (source === 'camera') {
+                    videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    videoElement.srcObject = videoStream;
+                } else {
+                    const file = videoFileInput.files[0];
+                    if (file) {
+                        const videoBlob = new Blob([file], { type: file.type });
+                        videoElement.src = URL.createObjectURL(videoBlob);
+                    }
+                }
+                videoElement.play();
+            } catch (error) {
+                console.error('Erreur accès caméra:', error);
+                alert('Erreur lors de l\'accès à la caméra');
+            }
+        }
+
+        async function startAnalysis() {
+            if (!videoElement.src) {
+                alert('Veuillez sélectionner une source vidéo d\'abord');
+                return;
+            }
+
+            if (!pose) {
+                pose = new Pose({
+                    locateFile: (file) => {
+                        return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+                    }
+                });
+
+                pose.setOptions({
+                    modelComplexity: 1,
+                    smoothLandmarks: true,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+
+                pose.onResults(onResults);
+            }
+
+            isAnalyzing = true;
+            animationFrameId = requestAnimationFrame(analyzeFrame);
+        }
+
+        function stopAnalysis() {
+            isAnalyzing = false;
+            
+            // Nettoyage des ressources
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+                videoStream = null;
+                videoElement.srcObject = null;
+            }
+            
+            videoElement.pause();
+            videoElement.src = '';
+            
+            // Réinitialisation des métriques
+            document.getElementById('kneeAngle').textContent = '--°';
+            document.getElementById('hipAngle').textContent = '--°';
+            document.getElementById('contactTime').textContent = '-- ms';
+            document.getElementById('frequency').textContent = '-- Hz';
+            
+            // Réinitialisation des feedbacks
+            const feedbackDiv = document.getElementById('feedback');
+            feedbackDiv.innerHTML = '';
+        }
+
+        function onResults(results) {
+            if (results.poseLandmarks) {
+                // Mise à jour des métriques
+                updateMetrics(results.poseLandmarks);
+            }
+        }
+
+        function updateMetrics(landmarks) {
+            // Simulation de métriques pour la démo
+            document.getElementById('kneeAngle').textContent = 
+                Math.round(90 + Math.random() * 10) + '°';
+            document.getElementById('hipAngle').textContent = 
+                Math.round(120 + Math.random() * 10) + '°';
+            document.getElementById('contactTime').textContent = 
+                Math.round(150 + Math.random() * 20) + ' ms';
+            document.getElementById('frequency').textContent = 
+                (4 + Math.random() * 0.5).toFixed(1) + ' Hz';
+        }
+
+        async function analyzeFrame() {
+            if (!isAnalyzing) return;
+            
+            if (videoElement.readyState === 4) {
+                await pose.send({image: videoElement});
+            }
+            
+            requestAnimationFrame(analyzeFrame);
+        }
+
+        // Vérification de l'authentification
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

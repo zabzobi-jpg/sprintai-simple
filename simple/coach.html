@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SprintAI - Espace Coach</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar (même que les autres pages) -->
+        <div class="w-64 bg-gray-800 p-6">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-green-400">SprintAI</h1>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Dashboard</span>
+                </a>
+                <a href="athlete.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Espace Athlète</span>
+                </a>
+                <a href="coach.html" class="flex items-center p-3 text-white bg-gray-700 rounded">
+                    <span>Espace Coach</span>
+                </a>
+                <a href="analysis.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Analyse de la foulée</span>
+                </a>
+                <a href="history.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Historique</span>
+                </a>
+                <a href="recommendations.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Recommandations IA</span>
+                </a>
+                <a href="settings.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Paramètres</span>
+                </a>
+                <a href="support.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Support</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-6">
+                <div class="flex items-center mb-4">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium" id="userName"></p>
+                        <p class="text-xs text-gray-400" id="userRole"></p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-8">
+                <h2 class="text-3xl font-bold mb-8">Gestion des Athlètes</h2>
+
+                <!-- Liste des athlètes -->
+                <div class="bg-gray-800 rounded-lg p-6 mb-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-semibold">Mes Athlètes</h3>
+                        <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded">
+                            + Ajouter un athlète
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Athlète 1 -->
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-medium">Fatima Zahra</h4>
+                                    <p class="text-sm text-gray-400">Senior - 100m, 200m</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-sm">
+                                        Voir profil
+                                    </button>
+                                    <button class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded text-sm">
+                                        Analyser
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-400">Dernière analyse</p>
+                                    <p>14 juin 2025</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Score global</p>
+                                    <p class="text-green-400">85%</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Progrès</p>
+                                    <p class="text-green-400">+5%</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Athlète 2 -->
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-medium">Ahmed Tazi</h4>
+                                    <p class="text-sm text-gray-400">Junior - 100m, 400m</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-sm">
+                                        Voir profil
+                                    </button>
+                                    <button class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded text-sm">
+                                        Analyser
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-400">Dernière analyse</p>
+                                    <p>13 juin 2025</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Score global</p>
+                                    <p class="text-yellow-400">75%</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Progrès</p>
+                                    <p class="text-green-400">+3%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Planification des séances -->
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-6">Planification des séances</h3>
+                    <div class="space-y-4">
+                        <!-- Séance 1 -->
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-medium">Analyse Technique - Fatima Zahra</h4>
+                                    <p class="text-sm text-gray-400">Lundi 16 juin - 15:00</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded text-sm">
+                                        Modifier
+                                    </button>
+                                    <button class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Séance 2 -->
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-medium">Sprint Test - Ahmed Tazi</h4>
+                                    <p class="text-sm text-gray-400">Mardi 17 juin - 10:00</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded text-sm">
+                                        Modifier
+                                    </button>
+                                    <button class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vérification de l'authentification
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+
+        // Mise à jour des informations utilisateur
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userRole').textContent = user.role;
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

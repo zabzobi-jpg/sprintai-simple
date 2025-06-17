@@ -1,0 +1,14 @@
+type: static
+name: sprintai-simple
+environment: production
+region: eu-west-1
+
+static:
+  buildCommand: npm install
+  startCommand: npm start
+  buildOutput: build
+  dist: .
+
+env:
+  - key: NODE_ENV
+    value: production

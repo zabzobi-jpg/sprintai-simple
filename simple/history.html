@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SprintAI - Historique</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar (même que les autres pages) -->
+        <div class="w-64 bg-gray-800 p-6">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-green-400">SprintAI</h1>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Dashboard</span>
+                </a>
+                <a href="athlete.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Espace Athlète</span>
+                </a>
+                <a href="coach.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Espace Coach</span>
+                </a>
+                <a href="analysis.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Analyse de la foulée</span>
+                </a>
+                <a href="history.html" class="flex items-center p-3 text-white bg-gray-700 rounded">
+                    <span>Historique</span>
+                </a>
+                <a href="recommendations.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Recommandations IA</span>
+                </a>
+                <a href="settings.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Paramètres</span>
+                </a>
+                <a href="support.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <span>Support</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-6">
+                <div class="flex items-center mb-4">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium" id="userName"></p>
+                        <p class="text-xs text-gray-400" id="userRole"></p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold">Historique des Séances</h2>
+                    <div class="flex space-x-4">
+                        <select class="bg-gray-700 text-white px-4 py-2 rounded">
+                            <option>Tous les types</option>
+                            <option>Sprint</option>
+                            <option>Technique</option>
+                            <option>Test</option>
+                        </select>
+                        <select class="bg-gray-700 text-white px-4 py-2 rounded">
+                            <option>Tout l'historique</option>
+                            <option>7 derniers jours</option>
+                            <option>30 derniers jours</option>
+                            <option>3 derniers mois</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Liste des séances -->
+                <div class="space-y-4">
+                    <!-- Séance 1 -->
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold">Séance Sprint</h3>
+                                <p class="text-sm text-gray-400">14 juin 2025 - 15:00</p>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500 text-white rounded-full text-sm">
+                                Excellent
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm text-gray-400">Vitesse max</p>
+                                <p class="font-medium">10.2 m/s</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Temps contact</p>
+                                <p class="font-medium">165 ms</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Fréquence</p>
+                                <p class="font-medium">4.5 Hz</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Score global</p>
+                                <p class="font-medium text-green-400">92%</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm">
+                                Voir détails
+                            </button>
+                            <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-sm">
+                                Télécharger rapport
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Séance 2 -->
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold">Analyse Technique</h3>
+                                <p class="text-sm text-gray-400">12 juin 2025 - 10:00</p>
+                            </div>
+                            <span class="px-3 py-1 bg-yellow-500 text-white rounded-full text-sm">
+                                Bon
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm text-gray-400">Vitesse max</p>
+                                <p class="font-medium">9.8 m/s</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Temps contact</p>
+                                <p class="font-medium">175 ms</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Fréquence</p>
+                                <p class="font-medium">4.2 Hz</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Score global</p>
+                                <p class="font-medium text-yellow-400">78%</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm">
+                                Voir détails
+                            </button>
+                            <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-sm">
+                                Télécharger rapport
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Séance 3 -->
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold">Test Performance</h3>
+                                <p class="text-sm text-gray-400">10 juin 2025 - 14:00</p>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500 text-white rounded-full text-sm">
+                                Excellent
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm text-gray-400">Vitesse max</p>
+                                <p class="font-medium">10.0 m/s</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Temps contact</p>
+                                <p class="font-medium">170 ms</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Fréquence</p>
+                                <p class="font-medium">4.4 Hz</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Score global</p>
+                                <p class="font-medium text-green-400">88%</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm">
+                                Voir détails
+                            </button>
+                            <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-sm">
+                                Télécharger rapport
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vérification de l'authentification
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+
+        // Mise à jour des informations utilisateur
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userRole').textContent = user.role;
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

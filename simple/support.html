@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SprintAI - Support</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 p-6">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-green-400">SprintAI</h1>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="athlete.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded athlete-only">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    <span>Espace Athlète</span>
+                </a>
+                <a href="coach.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded coach-only">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <span>Espace Coach</span>
+                </a>
+                <a href="analysis.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                    </svg>
+                    <span>Analyse de la foulée</span>
+                </a>
+                <a href="history.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Historique</span>
+                </a>
+                <a href="recommendations.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <span>Recommandations IA</span>
+                </a>
+                <a href="settings.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span>Paramètres</span>
+                </a>
+                <a href="support.html" class="flex items-center p-3 text-white bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                    <span>Support</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-6">
+                <div class="flex items-center mb-4">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium" id="userName"></p>
+                        <p class="text-xs text-gray-400" id="userRole"></p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-8">
+                <h2 class="text-3xl font-bold mb-8">Support & Aide</h2>
+
+                <!-- Formulaire de contact -->
+                <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Contacter le Support</h3>
+                    <form id="supportForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Sujet</label>
+                            <select id="subject" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:border-green-400 focus:ring-1 focus:ring-green-400">
+                                <option value="technical">Problème technique</option>
+                                <option value="account">Compte utilisateur</option>
+                                <option value="analysis">Analyse de la foulée</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:border-green-400 focus:ring-1 focus:ring-green-400"></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded">
+                                Envoyer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- FAQ -->
+                <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                    <h3 class="text-xl font-semibold mb-4">FAQ</h3>
+                    <div class="space-y-4">
+                        <details class="bg-gray-700 p-4 rounded-lg">
+                            <summary class="font-medium cursor-pointer">Comment utiliser l'analyse de la foulée ?</summary>
+                            <p class="mt-2 text-sm text-gray-400">
+                                Pour utiliser l'analyse de la foulée, sélectionnez votre source vidéo (caméra ou fichier),
+                                puis cliquez sur "Démarrer". Une fois la vidéo prête, cliquez sur "Analyser" pour voir les métriques en temps réel.
+                            </p>
+                        </details>
+                        <details class="bg-gray-700 p-4 rounded-lg">
+                            <summary class="font-medium cursor-pointer">Comment lire les recommandations IA ?</summary>
+                            <p class="mt-2 text-sm text-gray-400">
+                                Les recommandations IA vous montrent vos points forts et les aspects à améliorer.
+                                Chaque recommandation est accompagnée d'exercices spécifiques pour vous aider à progresser.
+                            </p>
+                        </details>
+                        <details class="bg-gray-700 p-4 rounded-lg">
+                            <summary class="font-medium cursor-pointer">Comment modifier mes paramètres ?</summary>
+                            <p class="mt-2 text-sm text-gray-400">
+                                Allez dans la section "Paramètres" pour modifier vos informations personnelles,
+                                vos préférences d'analyse et vos paramètres de notifications.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Informations de Contact</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium mb-2">Support Technique</h4>
+                            <p class="text-sm text-gray-400">support@sprintai.ma</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium mb-2">Service Client</h4>
+                            <p class="text-sm text-gray-400">+212 555 123 456</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium mb-2">Heures d'ouverture</h4>
+                            <p class="text-sm text-gray-400">Lundi - Vendredi : 9h00 - 18h00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vérification de l'authentification
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+
+        // Mise à jour des informations utilisateur
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userRole').textContent = user.role;
+
+        // Afficher/masquer les éléments selon le rôle
+        if (user.role === 'coach') {
+            document.querySelectorAll('.coach-only').forEach(el => el.classList.remove('hidden'));
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+
+        // Gestion du formulaire de support
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Votre message a été envoyé avec succès !');
+        });
+    </script>
+</body>
+</html>

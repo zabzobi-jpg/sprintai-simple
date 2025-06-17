@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SprintAI - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 p-6">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-green-400">SprintAI</h1>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="flex items-center p-3 text-white bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="athlete.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded athlete-only">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    <span>Espace Athlète</span>
+                </a>
+                <a href="coach.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded coach-only">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <span>Espace Coach</span>
+                </a>
+                <a href="analysis.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                    </svg>
+                    <span>Analyse de la foulée</span>
+                </a>
+                <a href="history.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Historique</span>
+                </a>
+                <a href="recommendations.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <span>Recommandations IA</span>
+                </a>
+                <a href="settings.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span>Paramètres</span>
+                </a>
+                <a href="admin.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded admin-only hidden">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                    </svg>
+                    <span>Administration</span>
+                </a>
+                <a href="support.html" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 rounded">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                    <span>Support & Aide</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-6">
+                <div class="flex items-center mb-4">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium" id="userName"></p>
+                        <p class="text-xs text-gray-400" id="userRole"></p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="p-8">
+                <div class="mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Vue Athlète -->
+                        <div class="athlete-view">
+                            <h2 class="text-3xl font-bold mb-4">Dashboard Athlète</h2>
+                            <div class="grid grid-cols-3 gap-6">
+                                <div class="bg-gray-700 p-6 rounded-lg">
+                                    <h3 class="text-xl font-semibold mb-2">Vitesse Personnelle</h3>
+                                    <p class="text-4xl font-bold text-green-400">8.5 m/s</p>
+                                    <p class="text-sm text-gray-400">+5% depuis la dernière analyse</p>
+                                </div>
+                                <div class="bg-gray-700 p-6 rounded-lg">
+                                    <h3 class="text-xl font-semibold mb-2">Séances Analyse</h3>
+                                    <p class="text-4xl font-bold text-green-400">12</p>
+                                    <p class="text-sm text-gray-400">Cette saison</p>
+                                </div>
+                                <div class="bg-gray-700 p-6 rounded-lg">
+                                    <h3 class="text-xl font-semibold mb-2">Score Technique</h3>
+                                    <p class="text-4xl font-bold text-green-400">85%</p>
+                                    <p class="text-sm text-gray-400">Objectif : 90%</p>
+                                </div>
+                            </div>
+
+                            <!-- Dernière analyse -->
+                            <div class="mt-6">
+                                <h3 class="text-xl font-semibold mb-4">Dernière Analyse</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-2">Métriques clés</h4>
+                                        <ul class="space-y-2">
+                                            <li class="flex justify-between">
+                                                <span>Angle Genou</span>
+                                                <span class="text-green-400">92°</span>
+                                            </li>
+                                            <li class="flex justify-between">
+                                                <span>Temps Contact</span>
+                                                <span class="text-green-400">180ms</span>
+                                            </li>
+                                            <li class="flex justify-between">
+                                                <span>Fréquence</span>
+                                                <span class="text-green-400">4.2 Hz</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-2">Recommandations</h4>
+                                        <p class="text-gray-300">Améliorer la flexion du genou pendant la phase de poussée</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vue Coach -->
+                        <div class="coach-view hidden">
+                            <h2 class="text-3xl font-bold mb-4">Dashboard Coach</h2>
+                            <div class="grid grid-cols-3 gap-6">
+                                <div class="bg-gray-700 p-6 rounded-lg">
+                                    <h3 class="text-xl font-semibold mb-2">Athlètes Actifs</h3>
+                                    <p class="text-4xl font-bold text-green-400">15</p>
+                                    <p class="text-sm text-gray-400">Cette saison</p>
+                                </div>
+                                <div class="bg-gray-700 p-6 rounded-lg">
+                                    <h3 class="text-xl font-semibold mb-2">Séances Planifiées</h3>
+                                    <p class="text-4xl font-bold text-green-400">24</p>
+                                    <p class="text-sm text-gray-400">Cette semaine</p>
+                                </div>
+                                <div class="bg-gray-700 p-6 rounded-lg">
+                                    <h3 class="text-xl font-semibold mb-2">Progression Moyenne</h3>
+                                    <p class="text-4xl font-bold text-green-400">+3%</p>
+                                    <p class="text-sm text-gray-400">Cette saison</p>
+                                </div>
+                            </div>
+
+                            <!-- Statistiques d'équipe -->
+                            <div class="mt-6">
+                                <h3 class="text-xl font-semibold mb-4">Statistiques d'Équipe</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-2">Performance Moyenne</h4>
+                                        <div class="bg-gray-700 p-4 rounded-lg">
+                                            <p class="text-2xl font-bold text-green-400">8.7 m/s</p>
+                                            <p class="text-sm text-gray-400">Objectif : 9.0 m/s</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-2">Score Technique</h4>
+                                        <div class="bg-gray-700 p-4 rounded-lg">
+                                            <p class="text-2xl font-bold text-green-400">82%</p>
+                                            <p class="text-sm text-gray-400">Objectif : 85%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendrier d'entraînement -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Calendrier d'entraînement</h3>
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <div class="grid grid-cols-7 gap-4">
+                            <!-- Jours de la semaine -->
+                            <div class="text-center font-semibold">Lun</div>
+                            <div class="text-center font-semibold">Mar</div>
+                            <div class="text-center font-semibold">Mer</div>
+                            <div class="text-center font-semibold">Jeu</div>
+                            <div class="text-center font-semibold">Ven</div>
+                            <div class="text-center font-semibold">Sam</div>
+                            <div class="text-center font-semibold">Dim</div>
+                            
+                            <!-- Sessions -->
+                            <div class="text-center p-2 bg-green-500 rounded">Sprint</div>
+                            <div class="text-center p-2 bg-gray-700 rounded">Repos</div>
+                            <div class="text-center p-2 bg-blue-500 rounded">Tech</div>
+                            <div class="text-center p-2 bg-green-500 rounded">Sprint</div>
+                            <div class="text-center p-2 bg-yellow-500 rounded">Force</div>
+                            <div class="text-center p-2 bg-gray-700 rounded">Repos</div>
+                            <div class="text-center p-2 bg-purple-500 rounded">Test</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vérification de l'authentification
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+
+        // Mise à jour des informations utilisateur
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userRole').textContent = user.role;
+
+        // Afficher/masquer les éléments selon le rôle
+        document.querySelectorAll('.coach-only').forEach(el => {
+            if (user.role === 'coach') {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        });
+
+        document.querySelectorAll('.athlete-only').forEach(el => {
+            if (user.role === 'athlete') {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        });
+
+        // Afficher la vue appropriée
+        if (user.role === 'coach') {
+            document.querySelector('.coach-view').classList.remove('hidden');
+            document.querySelector('.athlete-view').classList.add('hidden');
+        } else {
+            document.querySelector('.athlete-view').classList.remove('hidden');
+            document.querySelector('.coach-view').classList.add('hidden');
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+
+        // Initialisation
+        checkAuth();
+    </script>
+</body>
+</html>
